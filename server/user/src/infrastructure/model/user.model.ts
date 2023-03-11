@@ -51,6 +51,6 @@ UserSchema.pre('save', async function (next) {
 })
 
 
-const UserModel = model('users', UserSchema)
+const UserModel = model<UserEntity>('users', UserSchema)
 
 export default UserModel

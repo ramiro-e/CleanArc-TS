@@ -1,5 +1,5 @@
 import {v4 as uuid} from "uuid"
-import { UserEntity, IUser, UpdateUserEntity, IUserUpdate, NewUserEntity } from "./user.entity";
+import { UserEntity, IUser, UpdateUserEntity, IUserUpdate, NewUserEntity, IUserPartial } from "./user.entity";
 
 export class NewUserValue implements NewUserEntity{
     uuid: string;
@@ -27,28 +27,27 @@ export class NewUserValue implements NewUserEntity{
     
 }
 
-export class UserUpdateValue implements UpdateUserEntity{
-    firstName?: string;
-    lastName?: string;
-    dni?: number;
-    email?: string;
-    image?: string;
-    password?: string;
-    isSuperuser?: boolean;
-    isActive?: boolean;
-    isConfirmed?: boolean;
+export class UpdateUserValue implements UpdateUserEntity{
+    firstName: string;
+    lastName: string;
+    dni: number;
+    email: string;
+    image: string;
+    password: string;
+    isSuperuser: boolean;
+    isActive: boolean;
+    isConfirmed: boolean;
 
-    constructor({firstName, lastName, dni, email, image, password}:IUserUpdate){
+    constructor({firstName, lastName, dni, email, image, password, isSuperuser, isActive, isConfirmed}:UpdateUserEntity){
         if(firstName)this.firstName = firstName
         if(lastName)this.lastName = lastName
         if(dni)this.dni = dni
         if(email)this.email = email
         if(image)this.image = image
         if(password)this.password = password
-        this.isSuperuser = false
-        this.isActive = true
-        this.isConfirmed = false
+        if(isSuperuser)this.isSuperuser = isSuperuser
+        if(isActive)this.isActive = isActive
+        if(isConfirmed)this.isConfirmed = isConfirmed
     }
     
 }
-
